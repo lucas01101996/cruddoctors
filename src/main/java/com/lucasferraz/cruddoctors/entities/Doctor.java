@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 import com.lucasferraz.cruddoctors.enums.MedicalSpecialty;
 
@@ -23,15 +24,20 @@ public class Doctor implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@Size(max = 120)
 	private String name;
 	
+	@Size(max = 7)
 	private String crm;
 	
+	@Column(name = "landiline")
 	private Integer landilinePhone;
 	
+	@Column(name = "mobile")
 	private Integer mobilePhone;
 	
 	private Integer cep;
+	
 	@Enumerated(EnumType.STRING)
 	@Column(name = "specialty")
 	private MedicalSpecialty medicalSpecialty;
@@ -41,8 +47,7 @@ public class Doctor implements Serializable{
 	}
 
 
-	public Doctor(Integer id, String name, String crm, Integer landilinePhone, Integer mobilePhone,
-			Integer cep, MedicalSpecialty medicalSpecialty) {
+	public Doctor(Integer id, String name, String crm, Integer landilinePhone, Integer mobilePhone, Integer cep, MedicalSpecialty medicalSpecialty) {
 		this.id = id;
 		this.name = name;
 		this.crm = crm;
@@ -50,43 +55,37 @@ public class Doctor implements Serializable{
 		this.mobilePhone = mobilePhone;
 		this.cep = cep;
 		this.medicalSpecialty = medicalSpecialty;
+		
+		
 	}
-
 
 	public Integer getId() {
 		return id;
 	}
 
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
 
 	public String getName() {
 		return name;
 	}
 
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
 
 	public String getCrm() {
 		return crm;
 	}
 
-
 	public void setCrm(String crm) {
 		this.crm = crm;
 	}
 
-
 	public Integer getLandilinePhone() {
 		return landilinePhone;
 	}
-
 
 	public void setLandilinePhone(Integer landilinePhone) {
 		this.landilinePhone = landilinePhone;
@@ -117,15 +116,7 @@ public class Doctor implements Serializable{
 		return medicalSpecialty;
 	}
 
-
 	public void setMedicalSpecialty(MedicalSpecialty medicalSpecialty) {
 		this.medicalSpecialty = medicalSpecialty;
 	}
-	
-	
-	
-	
-	
-	
-
 }
