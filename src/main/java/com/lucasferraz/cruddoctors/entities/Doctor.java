@@ -13,8 +13,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import org.springframework.lang.NonNull;
-
 import com.lucasferraz.cruddoctors.enums.MedicalSpecialty;
 
 @Entity
