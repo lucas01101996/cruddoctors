@@ -10,7 +10,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.springframework.lang.NonNull;
 
 import com.lucasferraz.cruddoctors.enums.MedicalSpecialty;
 
@@ -24,9 +27,11 @@ public class Doctor implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@NotNull
 	@Size(max = 120)
 	private String name;
 	
+	@NotNull
 	@Size(max = 7)
 	private String crm;
 	
