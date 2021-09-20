@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.lucasferraz.cruddoctors.entities.Doctor;
+import com.lucasferraz.cruddoctors.DTO.DoctorDTO;
 import com.lucasferraz.cruddoctors.services.DoctorService;
 
 @RestController
@@ -19,8 +19,8 @@ public class DoctorResource {
 	private DoctorService service;
 	
 	@GetMapping
-	public ResponseEntity<List<Doctor>> findAll(){
-		List<Doctor> list = service.findAll();
+	public ResponseEntity<List<DoctorDTO>> findAll(){
+		List<DoctorDTO> list = service.findAll();
 		return ResponseEntity.ok(list);
 	}
 
