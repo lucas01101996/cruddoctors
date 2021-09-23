@@ -1,12 +1,18 @@
 package com.lucasferraz.cruddoctors.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -14,7 +20,6 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "tb_doctor")
 public class Doctor implements Serializable{
-
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -34,12 +39,17 @@ public class Doctor implements Serializable{
 	
 	@Column(name = "mobile")
 	private Integer mobilePhone;
-	
 	private Integer cep;
+	
+	@ManyToMany
+	@JoinTable(name = "tb_doctor_specialty",
+		joinColumns = @JoinColumn(name = "doctor_id"),
+		inverseJoinColumns = @JoinColumn(name ="specialty_id"))
+	Set<Specialty> specialties = new HashSet<>();
+	
 	
 	public Doctor() {
 	}
-
 
 	public Doctor(Integer id, String name, String crm, Integer landilinePhone, Integer mobilePhone, Integer cep) {
 		this.id = id;
@@ -101,4 +111,28 @@ public class Doctor implements Serializable{
 	public void setCep(Integer cep) {
 		this.cep = cep;
 	}
+
+	public Set<Specialty> getSpecialties() {
+		return specialties;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Doctor other = (Doctor) obj;
+		return Objects.equals(id, other.id);
+	}
+	
+	
+	
 }

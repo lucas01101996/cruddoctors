@@ -1,8 +1,12 @@
 package com.lucasferraz.cruddoctors.DTO;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 import com.lucasferraz.cruddoctors.entities.Doctor;
+import com.lucasferraz.cruddoctors.entities.Specialty;
 
 public class DoctorDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -13,6 +17,8 @@ public class DoctorDTO implements Serializable{
 	private Integer landilinePhone;
 	private Integer mobilePhone;
 	private Integer cep;
+	
+	private List<Specialty> specialties = new ArrayList<>();
 	
 	public DoctorDTO() {
 	}
@@ -33,6 +39,11 @@ public class DoctorDTO implements Serializable{
 		landilinePhone = entity.getLandilinePhone();
 		mobilePhone = entity.getMobilePhone();
 		cep = entity.getCep();
+	}
+	
+	public DoctorDTO(Doctor entity, Set<Specialty> specialties) {
+		this(entity);
+		
 	}
 	
 	public Integer getId() {
@@ -81,6 +92,10 @@ public class DoctorDTO implements Serializable{
 
 	public void setCep(Integer cep) {
 		this.cep = cep;
+	}
+
+	public List<Specialty> getSpecialties() {
+		return specialties;
 	}
 
 }
