@@ -4,16 +4,12 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
-import com.lucasferraz.cruddoctors.enums.MedicalSpecialty;
 
 @Entity
 @Table(name = "tb_doctor")
@@ -41,25 +37,17 @@ public class Doctor implements Serializable{
 	
 	private Integer cep;
 	
-	@Enumerated(EnumType.STRING)
-	@Column(name = "specialty")
-	private MedicalSpecialty medicalSpecialty;
-	
-	
 	public Doctor() {
 	}
 
 
-	public Doctor(Integer id, String name, String crm, Integer landilinePhone, Integer mobilePhone, Integer cep, MedicalSpecialty medicalSpecialty) {
+	public Doctor(Integer id, String name, String crm, Integer landilinePhone, Integer mobilePhone, Integer cep) {
 		this.id = id;
 		this.name = name;
 		this.crm = crm;
 		this.landilinePhone = landilinePhone;
 		this.mobilePhone = mobilePhone;
-		this.cep = cep;
-		this.medicalSpecialty = medicalSpecialty;
-		
-		
+		this.cep = cep;		
 	}
 
 	public Integer getId() {
@@ -112,14 +100,5 @@ public class Doctor implements Serializable{
 
 	public void setCep(Integer cep) {
 		this.cep = cep;
-	}
-
-
-	public MedicalSpecialty getMedicalSpecialty() {
-		return medicalSpecialty;
-	}
-
-	public void setMedicalSpecialty(MedicalSpecialty medicalSpecialty) {
-		this.medicalSpecialty = medicalSpecialty;
 	}
 }

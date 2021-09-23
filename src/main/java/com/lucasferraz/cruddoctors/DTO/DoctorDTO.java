@@ -3,7 +3,6 @@ package com.lucasferraz.cruddoctors.DTO;
 import java.io.Serializable;
 
 import com.lucasferraz.cruddoctors.entities.Doctor;
-import com.lucasferraz.cruddoctors.enums.MedicalSpecialty;
 
 public class DoctorDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -14,20 +13,17 @@ public class DoctorDTO implements Serializable{
 	private Integer landilinePhone;
 	private Integer mobilePhone;
 	private Integer cep;
-	private MedicalSpecialty medicalSpecialty;
 	
 	public DoctorDTO() {
 	}
 
-	public DoctorDTO(Integer id, String name, String crm, Integer landilinePhone, Integer mobilePhone, Integer cep,
-			MedicalSpecialty medicalSpecialty) {
+	public DoctorDTO(Integer id, String name, String crm, Integer landilinePhone, Integer mobilePhone, Integer cep) {
 		this.id = id;
 		this.name = name;
 		this.crm = crm;
 		this.landilinePhone = landilinePhone;
 		this.mobilePhone = mobilePhone;
 		this.cep = cep;
-		this.medicalSpecialty = medicalSpecialty;
 	}
 
 	public DoctorDTO(Doctor entity) {
@@ -37,7 +33,6 @@ public class DoctorDTO implements Serializable{
 		landilinePhone = entity.getLandilinePhone();
 		mobilePhone = entity.getMobilePhone();
 		cep = entity.getCep();
-		medicalSpecialty = entity.getMedicalSpecialty();
 	}
 	
 	public Integer getId() {
@@ -86,14 +81,6 @@ public class DoctorDTO implements Serializable{
 
 	public void setCep(Integer cep) {
 		this.cep = cep;
-	}
-
-	public MedicalSpecialty getMedicalSpecialty() {
-		return medicalSpecialty;
-	}
-
-	public void setMedicalSpecialty(MedicalSpecialty medicalSpecialty) {
-		this.medicalSpecialty = medicalSpecialty;
 	}
 
 }
